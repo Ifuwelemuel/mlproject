@@ -1,5 +1,14 @@
+
+from pathlib import Path
 import sys
-import logging
+path_root = Path(__file__).parents[3]
+sys.path.append(str(path_root))
+print(sys.path)
+
+print('##########################')
+from  src.logger import logging
+
+
 def error_message_detail(error,error_detail:sys):
     
     _,_,exc_tb=error_detail.exc_info()
@@ -21,3 +30,18 @@ class CustomException(Exception):
 
 
 
+
+
+
+
+if __name__=="__main__":
+    
+    
+    try:
+        a=1/0
+    except Exception as e:
+        logging.info("divided by zero error")
+        raise CustomException(e,sys)
+    
+        
+    
